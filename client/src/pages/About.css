@@ -1,0 +1,14 @@
+.about-hero {
+  background: linear-gradient(135deg, #1B4332, #2D6A4F);
+  color: #fff;
+  padding: 4rem 0;
+  text-align: center;
+}
+.about-hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.about-hero p { opacity: 0.9; font-size: 1.1rem; }
+.about-content { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+.about-card { background: var(--surface); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); }
+.about-card h2 { margin-bottom: 1rem; font-size: 1.4rem; }
+.about-card ul { margin: 1rem 0; padding-left: 1.5rem; }
+.about-card li { margin-bottom: 0.5rem; color: var(--text-secondary); }
+.about-card p { color: var(--text-secondary); line-height: 1.7; }
