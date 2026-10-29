@@ -27,7 +27,7 @@ const Register = () => {
     } catch (err) {
       if (!err.response) {
         setError(
-          'Cannot connect to backend server. Make sure the backend is running on port 5000 (cd server && npm start).'
+          'Cannot connect to the server. If this is a free deployment on Render, the backend may take 30–50 seconds to wake up from inactivity. Please wait a moment and try again.'
         );
       } else {
         setError(err.response?.data?.message || 'Registration failed. Please check your inputs.');
