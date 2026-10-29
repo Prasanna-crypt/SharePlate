@@ -6,7 +6,8 @@ const { registerRules, loginRules } = require('../utils/validators');
 
 const router = express.Router();
 
-const genToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+const JWT_SECRET = process.env.JWT_SECRET || 'surplus_food_default_jwt_secret_shareplate_2026';
+const genToken = (id) => jwt.sign({ id }, JWT_SECRET, { expiresIn: '7d' });
 
 // Register
 router.post('/register', registerRules, async (req, res, next) => {

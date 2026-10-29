@@ -1,13 +1,15 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'surplus_food_default_jwt_secret_shareplate_2026';
+
 const auth = async (req, res, next) => {
   try {
     const header = req.header('Authorization');
     if (!header || !header.startsWith('Bearer ')) {
       return res.status(401).json({ message: 'No token, authorization denied' });
     }
-    const decoded = jwt.verify(header.replace('Bearer ', ''), process.env.JWT_SECRET);
+    const decoded = jwt.verify(header.replace('Bearer ', ''), JWT_SECRET);
     const user = await User.findById(decoded.id).select('-password');
     if (!user) return res.status(401).json({ message: 'Token is not valid' });
     req.user = user;
@@ -21,7 +23,7 @@ const optionalAuth = async (req, res, next) => {
   try {
     const header = req.header('Authorization');
     if (header && header.startsWith('Bearer ')) {
-      const decoded = jwt.verify(header.replace('Bearer ', ''), process.env.JWT_SECRET);
+      const decoded = jwt.verify(header.replace('Bearer ', ''), JWT_SECRET);
       req.user = await User.findById(decoded.id).select('-password');
     }
   } catch (e) { /* ignore */ }
